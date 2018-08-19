@@ -1,0 +1,185 @@
+@import './variable';
+
+@keyframes slide-horizontal-mobile {
+    0%,
+    100% {
+        left: 0%;
+    }
+    50% {
+        left: 14%;
+    }
+}
+
+@media only screen and (max-width: 575.98px) {
+    .menu {
+        .navbar {
+            background-color: transparent;
+        }
+        .navbar-light .navbar-nav .nav-link {
+            font-weight: 700;
+            color: $gray;
+            padding-left: 5px;
+        }
+        .navbar-light .navbar-toggler {
+            background-color: white;
+        }
+        ul.navbar-nav.ml-auto {
+            padding: 15px;
+            background-color: white;
+        }
+        .navbar-light .navbar-nav .show>.nav-link,
+        .navbar-light .navbar-nav .active>.nav-link,
+        .navbar-light .navbar-nav .nav-link.show,
+        .navbar-light .navbar-nav .nav-link.active {
+            border-left: 2px solid $gray;
+            border-bottom: none;
+        }
+    }
+    .index {
+        .section1 {
+            .logo {
+                h1 {
+                    font-family: 'Merriweather', serif;
+                    font-size: 8vh;
+                }
+                h2 {
+                    margin-top: 15px;
+                    font-size: 5vh;
+                    text-align: right;
+                    font-weight: 800;
+                }
+            }
+            .features {
+                a {
+                    .cta {
+                        margin-bottom: 20px;
+                        h2 {
+                            font-size: 16px;
+                            padding-top: 12px;
+                        }
+                        .icon {
+                            padding-top: 12px;
+                            font-size: 35px;
+                        }
+                    }
+                }
+            }
+        }
+        .section2, .section3, .section4 {
+            padding-bottom: 40px;
+            .content {
+                padding-top: 9vh;
+            }
+            .img {
+                min-height: 100%;
+                padding-top: 10vh;
+            }
+        }
+        .section2 {
+            margin-top: 70px;
+        }
+        .section3 {
+            .content {
+                padding-top: 2vh;
+            }
+        }
+    }
+    .resolve, .tech {
+        .section1 {
+            .logo {
+                margin-top: 20vh;
+                h1 {
+                    font-size: 8vh;
+                    font-weight: 900;
+                    margin-top: 20px;
+                }
+                h2 {
+                    font-size: 3vh;
+                    color: #34495e;
+                }
+            }
+        }
+        .section2 {
+            margin-top: -160px;
+            margin-bottom: 100px;
+            .row {
+                margin-top: 80px;
+            }
+            .content {
+                margin-top: 20px;
+                a {
+                    h3 {
+                        font-weight: 900;
+                        font-size: 30px;
+                        line-height: 40px;
+                        color: #34495e;
+                        margin-bottom: 10px;
+                    }
+                    p {
+                        color: #34495e;
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+    .contact {
+        .section2 {
+            margin-top: -150px;
+        }
+        .info {
+            margin-top: 70px;
+        }
+    }
+    .server-storage, .cloud-storage {
+        .section1 {
+            .logo {
+                margin-top: 10vh;
+                h1 {
+                    font-size: 8vh;
+                    margin-top: 20px;
+                }
+                h2 {
+                    font-size: 3vh;
+                }
+            }
+        }
+        .section2 {
+            margin-top: -250px;
+            .list-group-item {
+                font-size: 18px;
+                text-transform: uppercase;
+                &.active {
+                    background-color: $gray;
+                    border-color: $gray;
+                }
+            }
+        }
+    }
+    .server-storage {
+        .section2 {
+            .tab-content {
+                .list-group {
+                    margin-top: 20px;
+                    .list-group-item {
+                        font-size: 16px;
+                    }
+                }
+                .four {
+                    font-size: 16px;
+                }
+                #pills-2, #pills-3, #pills-4 {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    .footer {
+        font-size: 16px;
+        background-size: cover;
+        background-position: top left ;
+        .column:first-child {
+            margin-top: 120px;
+        }
+    }
+}
