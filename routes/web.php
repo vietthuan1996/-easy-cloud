@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Controller@index')->name('index');
+Route::get('/lienhe', 'Controller@contact')->name('contact');
+Route::get('/giaiphap', 'Controller@solution')->name('solution');
+Route::get('/giaiphap/:slug', 'Controller@solutionDetail')->name('solution.detail');
+Route::get('/congnghe', 'Controller@service')->name('service');
+Route::get('/congnghe/:slug', 'Controller@solutionDetail')->name('service.detail');
 
 // Admin routes
 Route::prefix('admin')->group(function() {
@@ -25,5 +28,4 @@ Route::prefix('admin')->group(function() {
     Route::get('/giaiphap/them', 'AdminController@createSolution')->name('admin.solution.create');
     Route::get('/giaiphap/sua', 'AdminController@editSolution')->name('admin.solution.edit');
     Route::get('/lienhe', 'AdminController@requestAdvisory')->name('admin.requestAdvisory');
-    Route::get('/tab/them', 'AdminController@createTab')->name('admin.tab.create');
 });
