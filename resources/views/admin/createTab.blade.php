@@ -23,7 +23,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <textarea required class="form-control" name="describe" rows="10"></textarea>
+                            <textarea required class="form-control" name="content" id="content" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
@@ -47,6 +47,8 @@
 
     $(document).ready(function() {
         setFormValidation('#createValidation');
+
+        CKEDITOR.replace( 'content' );
     });
 </script>
 @endsection

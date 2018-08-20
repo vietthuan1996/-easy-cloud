@@ -57,7 +57,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <textarea required class="form-control" name="content" rows="10"></textarea>
+                            <textarea required id="contentPost" class="form-control" name="content" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,45 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <textarea required class="form-control" name="content" rows="10"></textarea>
+                            <textarea required class="form-control" id="contentTab1" name="content" rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                {{-- content --}}
+
+                <div class="col-xs-12 text-right">
+                    <a href="" class="btn btn-warning">Xóa</a>
+                    <button type="submit" class="btn btn-success">Lưu</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{{--  tab  --}}
+{{--  tab  --}}
+<div class="col-md-12">
+    <div class="card">
+        <form method="get" action="/" class="form-horizontal" id="tabValidation">
+            <div class="card-header card-header-text" data-background-color="rose">
+                <h4 class="card-title">Tab</h4>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Tiêu đề</label>
+                    <div class="col-sm-10">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input required type="text" class="form-control" name="title">
+                        </div>
+                    </div>
+                </div>
+                {{-- /title --}}
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Nội dung</label>
+                    <div class="col-sm-10">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <textarea required class="form-control" id="contentTab2" name="content" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
@@ -127,7 +165,9 @@
         setFormValidation('#createValidation');
         setFormValidation('#tabValidation');
 
-
+        CKEDITOR.replace( 'contentPost' );
+        CKEDITOR.replace( 'contentTab1' );
+        CKEDITOR.replace( 'contentTab2' );
     });
 </script>
 @endsection
