@@ -7,10 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Enterprise Cloude - Easay Cloud</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&amp;subset=latin-ext,vietnamese" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('js/app.js') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 </head>
 
 <body>
@@ -18,7 +17,7 @@
         <!-- menu -->
         <div class="menu row">
             <nav class="navbar navbar-light fixed-top navbar-expand-lg">
-                <a class="navbar-brand" href="#">LOGO</a>
+                <a class="navbar-brand" href="{{ route('home')}}">LOGO</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -27,7 +26,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">TRANG CHỦ
+                            <a class="nav-link" href="{{ route('home')}}">TRANG CHỦ
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -36,10 +35,8 @@
                                 CÔNG NGHỆ
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Tong quan</a>
-                                <a class="dropdown-item" href="#">Chi tiết</a>
-                                <a class="dropdown-item" href="#">Chi tiết</a>
-                                <a class="dropdown-item" href="#">Chi tiết</a>
+                                <a class="dropdown-item" href="{{ route('service') }}">Tổng quan</a>
+                                <a class="dropdown-item" href="{{ route('service.detail', 1) }}">Chi tiết</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -47,14 +44,12 @@
                                 GIẢI PHÁP
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="giaiphap.html">Tong quan</a>
-                                <a class="dropdown-item" href="#">chi tiết</a>
-                                <a class="dropdown-item" href="#">chi tiết</a>
-                                <a class="dropdown-item" href="#">chi tiết</a>
+                                <a class="dropdown-item" href="{{ route('solution') }}">Tổng quan</a>
+                                <a class="dropdown-item" href="{{ route('solution.detail', 1) }}">chi tiết</a>
                             </div>
                         </li>
                         <li class="nav-item" class="">
-                            <a class="nav-link pr-5" href="#">LIỆN HỆ</a>
+                            <a class="nav-link pr-5" href="{{ route('contact')}}">LIỆN HỆ</a>
                         </li>
 
                     </ul>
@@ -113,5 +108,10 @@
         <!-- /footer -->
     </div>
 </body>
+<script>
+    $(document).ready(function() {
+        console.log(1)
+    })
+</script>
 
 </html>
