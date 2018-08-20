@@ -51,24 +51,6 @@
                 {{--  /describe  --}}
 
                 {{--  content  --}}
-                <div class="row">
-                    <label class="col-sm-2 label-on-left">Loại</label>
-                    <div class="col-sm-10 checkbox-radios">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="type" value="content" checked> Nội dung
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="type" value="tab"> Nhiều tab
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                {{--  type  --}}
-
-                {{--  content  --}}
                 <div class="row inputContent">
                     <label class="col-sm-2 label-on-left">Nội dung *</label>
                     <div class="col-sm-10">
@@ -101,13 +83,6 @@
     $(document).ready(function() {
         setFormValidation('#createValidation');
 
-        $('input[name=type]').on('change', function() {
-            if ($('input[name=type]:checked').val() == 'tab') {
-                $('.inputContent').addClass('hidden');
-            } else {
-                $('.inputContent').removeClass('hidden');
-            }
-        });
         CKEDITOR.replace( 'content' );
     });
 </script>

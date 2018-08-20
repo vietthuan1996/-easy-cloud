@@ -49,7 +49,7 @@
     <section class="section2 col-12 feature">
         <div class="row">
             <div class="col-12 col-sm-6 text-center img">
-                <img src="./assets/cloud.gif" alt="" class="img-fluid">
+                <img src="{{asset('img/cloud.gif')}}" alt="" class="img-fluid">
             </div>
             <div class="col-12 col-sm-5 text-center content">
                 <h3 class="mb-5">
@@ -66,7 +66,7 @@
     <section class="section3 col-12 feature">
         <div class="row">
             <div class="col-12 col-sm-6 text-center img order-sm-2">
-                <img src="./assets/security.gif" alt="" class="img-fluid">
+                <img src="{{asset('img/security.gif')}}" alt="" class="img-fluid">
             </div>
             <div class="col-12 col-sm-5 offset-sm-1 text-center content order-sm-1">
                 <h3 class="mb-5">
@@ -83,7 +83,7 @@
     <section class="section4 col-12 feature">
         <div class="row">
             <div class="col-12 col-sm-6 text-center img">
-                <img src="./assets/server.gif" alt="" class="img-fluid">
+                <img src="{{asset('img/server.gif')}}" alt="" class="img-fluid">
             </div>
             <div class="col-12 col-sm-5 text-center content">
                 <h3 class="mb-5">
