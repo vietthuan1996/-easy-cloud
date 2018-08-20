@@ -18,6 +18,7 @@ Route::get('/', function () {
 // Admin routes
 Route::prefix('admin')->group(function() {
     Route::get('/', 'AdminController@dashboard')->name('admin');
+    Route::post('/', 'AdminController@editInformation')->name('admin.editInformation');
     Route::get('/dichvu', 'AdminController@service')->name('admin.service');
     Route::get('/dichvu/them', 'AdminController@createService')->name('admin.service.create');
     Route::get('/dichvu/sua', 'AdminController@editService')->name('admin.service.edit');

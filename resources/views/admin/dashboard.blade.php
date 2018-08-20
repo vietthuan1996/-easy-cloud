@@ -2,7 +2,8 @@
 @section('content')
 <div class="col-md-12">
     <div class="card">
-        <form method="get" action="/" class="form-horizontal" id="createValidation">
+        <form method="post" action="{{ route('admin.editInformation') }}" class="form-horizontal" id="createValidation">
+            {{ csrf_field() }}
             <div class="card-header card-header-text" data-background-color="rose">
                 <h4 class="card-title">Thông tin công ty</h4>
             </div>
@@ -13,7 +14,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input required type="text" name="company_name" class="form-control">
+                            <input required type="text" name="company_name" class="form-control" value="{{ $information->company_name == null ? '' : $information->company_name}}">
                         </div>
                     </div>
                 </div>
@@ -25,7 +26,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input required type="text" name="address" class="form-control">
+                            <input required type="text" name="address" class="form-control" value="{{ $information->address == null ? '' : $information->address}}">
                         </div>
                     </div>
                 </div>
@@ -36,7 +37,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input required type="text" name="phone" class="form-control">
+                            <input required type="text" name="phone" class="form-control" value="{{ $information->hotline == null ? '' : $information->hotline}}">
                         </div>
                     </div>
                 </div>
@@ -47,7 +48,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input required type="email" name="email" class="form-control">
+                            <input required type="email" name="email" class="form-control" value="{{ $information->email == null ? '' : $information->email}}">
                         </div>
                     </div>
                 </div>
@@ -58,7 +59,9 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <textarea required class="form-control" name="describe" rows="10"></textarea>
+                            <textarea required class="form-control" id="describe" name="describe" rows="10">
+                                {{ $information->describe == null ? '' : $information->describe}}
+                            </textarea>
                         </div>
                     </div>
                 </div>
@@ -82,6 +85,7 @@
 
     $(document).ready(function() {
         setFormValidation('#createValidation');
+        CKEDITOR.replace( 'describe' );
     });
 </script>
 @endsection

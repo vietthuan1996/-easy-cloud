@@ -2,12 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Information;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class AdminController extends Controller
 {
     public function dashboard() {
-        return view('admin.dashboard');
+        $information = Information::select('company_name', 'address', 'hotline', 'email', 'website', 'describe')->get()->first();
+        if (is_null($information)) {
+            $noneObject = new Information();
+            return view('admin.dashboard', ['information' => $noneObject]);
+        }
+        return view('admin.dashboard', ['information' => $information]);
+    }
+
+    public function editInformation(Request $request) {
+        return $request->phone;
+        $information = Information::select('company_name', 'address', 'hotline', 'email', 'website', 'describe')->get()->first();
+        if (is_null($information)) {
+            $insert = new Information();
+            $insert->company_name = $request->company_name;
+            $insert->address = $request->address;
+            $insert->hotline = $request->phone;
+            $insert->email = $request->email;
+            $insert->website = $request->website;
+            $insert->describe = $request->describe;
+            $insert->save();
+        }
+        return redirect()->route('admin');
     }
 
     public function service() {
