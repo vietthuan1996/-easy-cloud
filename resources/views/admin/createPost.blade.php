@@ -74,7 +74,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <textarea required class="form-control" name="content" rows="10"></textarea>
+                            <textarea id="content" required class="form-control" name="content" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
@@ -108,6 +108,7 @@
                 $('.inputContent').removeClass('hidden');
             }
         });
+        CKEDITOR.replace( 'content' );
     });
 </script>
 @endsection
