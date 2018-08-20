@@ -68,5 +68,26 @@
 
     </section>
     <!-- /section2-->
-</div>
+</div><script>
+    var map;
+
+    function initMap() {
+        var myLatLng = {
+            lat: 10.790580,
+            lng: 106.665500
+        };
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 18,
+            center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
 @endsection

@@ -24,7 +24,7 @@ class Controller extends BaseController
     }
 
     public function solutionDetail() {
-        return view('web.solutionDetail');
+        return view('web.postDetail');
     }
 
     public function service() {
@@ -32,6 +32,6 @@ class Controller extends BaseController
     }
 
     public function serviceDetail() {
-        return view('web.serviceDetail');
+        return view('web.postDetail');
     }
 }

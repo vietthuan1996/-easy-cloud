@@ -13,17 +13,7 @@
     <!-- section2 -->
     <section class="section2 container feature">
         <div class="row">
-            <div class="col-12 col-sm-3 mb-5">
-                <ul class="list-group">
-                    <li class="list-group-item active">
-                        <a href="">Cras justo odio</a></li>
-                    <li class="list-group-item"><a href="">Dapibus ac facilisis in</a></li>
-                    <li class="list-group-item"><a href="">Dapibus ac facilisis in</a></li>
-                    <li class="list-group-item"><a href="">Dapibus ac facilisis in</a></li>
-                </ul>
-            </div>
-            <div class="col-12 col-sm-9">
-                <h3>Lorem ipsum dolor sit amet.</h3>
+            <div class="col-12">
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, ipsam fuga! Non sint, aliquam omnis molestias
                     dolorum repudiandae quod ut molestiae doloribus saepe necessitatibus harum facilis inventore aperiam,
                     dolorem quia autem, dignissimos optio nisi? Ullam obcaecati voluptates ab velit sapiente nesciunt reprehenderit

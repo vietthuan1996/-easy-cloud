@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'Controller@index')->name('index');
+Route::get('/', 'Controller@index')->name('home');
 Route::get('/lienhe', 'Controller@contact')->name('contact');
 Route::get('/giaiphap', 'Controller@solution')->name('solution');
 Route::get('/giaiphap/:slug', 'Controller@solutionDetail')->name('solution.detail');
