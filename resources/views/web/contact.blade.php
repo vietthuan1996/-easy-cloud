@@ -1,6 +1,6 @@
 @extends('layout.web')
 @section('content')
-<div class="contact row">
+<div class="contact">
     <!-- section1 -->
     <section class="section1 row m-0">
         <div class="text-center col-12 logo">

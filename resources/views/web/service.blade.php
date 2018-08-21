@@ -1,12 +1,13 @@
 @extends('layout.web')
 @section('content')
-<div class="tech row">
+<div class="tech">
     <!-- section1 -->
     <section class="section1 row m-0">
         <div class="text-center col-12 logo">
-            <h1>GIẢI PHÁP <i class="fas fa-wrench"></i></h1>
-            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aut dolores quas deleniti doloremque non natus
-                provident fugiat rerum corrupti.</h2>
+            <div class="text-center col-12">
+                <h1>CÔNG NGHỆ <i class="fab fa-centercode"></i></h1>
+                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aut dolores quas deleniti doloremque non natus provident fugiat rerum corrupti.</h2>
+            </div>
         </div>
     </section>
     <!-- /section1 -->

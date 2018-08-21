@@ -1,12 +1,12 @@
 @extends('layout.web')
 @section('content')
-<div class="resolve row">
+<div class="resolve">
     <!-- section1 -->
     <section class="section1 row m-0">
         <div class="text-center col-12 logo">
             <h1>GIẢI PHÁP <i class="fas fa-wrench"></i></h1>
-            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aut dolores quas deleniti doloremque non natus
-                provident fugiat rerum corrupti.</h2>
+            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aut dolores quas deleniti doloremque non natus
+                provident fugiat rerum corrupti.</h3>
         </div>
     </section>
     <!-- /section1 -->
