@@ -1,6 +1,9 @@
 @extends('layout.admin')
 @section('content')
 <div class="col-md-12">
+    @if(Session::has('success'))
+        <p class="alert alert-success">{{ Session::get('success') }}</p>
+    @endif
     <div class="card">
         <form method="post" action="{{ route('admin.editInformation') }}" class="form-horizontal" id="createValidation">
             {{ csrf_field() }}
@@ -53,6 +56,19 @@
                     </div>
                 </div>
                 {{--  Email  --}}
+
+                {{--  Website  --}}
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Website</label>
+                    <div class="col-sm-10">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input required type="text" name="website" class="form-control" value="{{ $information->website == null ? '' : $information->website}}">
+                        </div>
+                    </div>
+                </div>
+                {{--  Website  --}}
+
                 {{--  Giới thiệu  --}}
                 <div class="row">
                     <label class="col-sm-2 label-on-left">Giới thiệu</label>

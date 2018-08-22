@@ -15,11 +15,13 @@ class Service extends Migration
     {
         Schema::create('service', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_cate');
             $table->string('name');
             $table->string('slug');
-            $table->text('describe')->nullable();
+            $table->string('image')->nullable();
+            $table->text('describe')->nullbale();
             $table->text('content')->nullable();
+            $table->string('link')->nullable();
+            $table->integer('type_show');
             $table->timestamps();
         });
     }

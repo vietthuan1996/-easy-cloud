@@ -1,5 +1,7 @@
 @extends('layout.admin')
 @section('content')
+    @if(!is_null($solution))
+        @foreach($solution as $sObject)
 <div class="col-md-4">
     <div class="card card-product">
         <div class="card-image" data-header-animation="true">
@@ -9,7 +11,7 @@
         </div>
         <div class="card-content">
             <div class="card-actions">
-                <a href="{{ route('admin.solution.edit')}}" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="Cập nhật">
+                <a href="{{ route('admin.solution.edit', 1) }}" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="Cập nhật">
                         <i class="material-icons">edit</i>
                     </a>
                 <a type="button" class="btn btn-danger btn-simple" rel="tooltip" data-placement="bottom" title="Xóa">
@@ -17,15 +19,19 @@
                     </a>
             </div>
             <h4 class="card-title">
-                <a href="#pablo">Cozy 5 Stars Apartment</a>
+                <a href="#pablo">{{ $sObject->name }}</a>
             </h4>
             <div class="card-description">
-                The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main
-                night life in Barcelona.
+                {{ str_limit($sObject->describe, 200) }}
             </div>
         </div>
     </div>
 </div>
+        @endforeach
+    @elseif (is_null($solution))
+        <p>Không có Giải Pháp nào cả, vui lòng thêm Giải Pháp !</p>
+    @else
+    @endif
 <div class="col-md-4">
     <div class="card card-product">
         <div class="card-content">

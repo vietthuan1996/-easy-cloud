@@ -18,7 +18,9 @@ $factory->define(App\Service::class, function (Faker $faker) {
     return [
         'name' => $temp,
         'slug' => str_slug($temp),
-        'id_cate' => $faker->numberBetween(1,2),
         'content' => $faker->sentence(1000),
+        'describe' => $faker->sentence(1000),
+        'link' => 'youtube.com',
+        'type_show' => $faker->numberBetween(1, 0)
     ];
 });

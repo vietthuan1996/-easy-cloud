@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     protected $fillable = [
-        'id_cate',
         'name',
         'alias',
         'content',
-        'describe'
+        'describe',
+        'link',
+        'type_show'
     ];
     protected $table = 'service';
 

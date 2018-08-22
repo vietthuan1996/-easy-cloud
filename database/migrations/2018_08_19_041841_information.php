@@ -14,6 +14,7 @@ class Information extends Migration
     public function up()
     {
         Schema::create('information', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('company_name')->nullable();
             $table->string('address')->nullable();
             $table->integer('hotline')->nullable();

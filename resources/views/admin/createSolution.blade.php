@@ -2,8 +2,13 @@
 @section('content')
 {{--  form  --}}
 <div class="col-md-12">
+    @if(Session::has('success'))
+        <p class="alert alert-success">{{ Session::get('success') }}</p>
+    @endif
     <div class="card">
-        <form method="get" action="/" class="form-horizontal" id="createValidation">
+        <form method="post" action="{{ route('admin.solution.save') }}" class="form-horizontal" enctype="multipart/form-data" id="createValidation">
+            {{ csrf_field() }}
+            <input type="hidden" name="id" value="{{ $solution == null ? '' : $solution->id }}">
             <div class="card-header card-header-text" data-background-color="rose">
                 <h4 class="card-title">Sửa bài</h4>
             </div>
@@ -14,7 +19,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input required type="text" class="form-control">
+                            <input required type="text" name="name" class="form-control" value="{{ $solution == null ? '' : $solution->name }}">
                         </div>
                     </div>
                 </div>
@@ -31,7 +36,7 @@
                             <span class="btn btn-rose btn-round btn-file">
                                 <span class="fileinput-new">Select image</span>
                             <span class="fileinput-exists">Change</span>
-                            <input required type="file" name="..." />
+                            <input required type="file" name="image" />
                             </span>
                             <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                         </div>
@@ -45,7 +50,9 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <textarea required class="form-control" name="describe" rows="10"></textarea>
+                            <textarea required id="contentDescribe" class="form-control" name="describe" rows="10">
+                                {{ $solution == null ? '' : $solution->describe }}
+                            </textarea>
                         </div>
                     </div>
                 </div>
@@ -57,12 +64,36 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <textarea required id="contentPost" class="form-control" name="content" rows="10"></textarea>
+                            <textarea required id="contentPost" class="form-control" name="contentSolution" rows="10">
+                                {{ $solution == null ? '' : $solution->content }}
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Đường link</label>
+                    <div class="col-sm-10">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input required  class="form-control" name="link" rows="10" value="{{ $solution == null ? '' : $solution->link }}">
+                            </input>
                         </div>
                     </div>
                 </div>
                 {{-- content --}}
 
+                <div class="row">
+                    <label class="col-sm-2 label-on-left"></label>
+                    <div class="col-sm-10">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="radio" name="type_show" value="0" {{ $solution == null ? '' : $solution->type_show == 0 ? 'checked' : '' }}> Hiển thị dạng đường link<br>
+                            <input type="radio" name="type_show" value="1" {{ $solution == null ? '' : $solution->type_show == 1 ? 'checked' : '' }}> Hiển thị dạng nội dung<br>
+                            </input>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-xs-12 text-right">
                     <button type="submit" class="btn btn-success">Lưu</button>
                 </div>
@@ -83,8 +114,9 @@
 
     $(document).ready(function() {
         setFormValidation('#createValidation');
-
         CKEDITOR.replace( 'contentPost' );
+        CKEDITOR.replace( 'contentDescribe' );
+
     });
 </script>
 @endsection

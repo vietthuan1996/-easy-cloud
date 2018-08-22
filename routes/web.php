@@ -23,10 +23,11 @@ Route::prefix('admin')->group(function() {
     Route::get('/', 'AdminController@dashboard')->name('admin');
     Route::post('/', 'AdminController@editInformation')->name('admin.editInformation');
     Route::get('/dichvu', 'AdminController@service')->name('admin.service');
-    Route::get('/dichvu/them', 'AdminController@createService')->name('admin.service.create');
-    Route::get('/dichvu/sua', 'AdminController@editService')->name('admin.service.edit');
+    Route::post('/dichvu/them', 'AdminController@createService')->name('admin.service.create');
+    Route::get('/dichvu/sua', 'AdminController@createService')->name('admin.service.edit');
     Route::get('/giaiphap', 'AdminController@solution')->name('admin.solution');
     Route::get('/giaiphap/them', 'AdminController@createSolution')->name('admin.solution.create');
-    Route::get('/giaiphap/sua', 'AdminController@editSolution')->name('admin.solution.edit');
+    Route::get('/giaiphap/sua/{id}', 'AdminController@createSolution')->name('admin.solution.edit');
+    Route::post('/giaiphap/luu', 'AdminController@saveSolution')->name('admin.solution.save');
     Route::get('/lienhe', 'AdminController@requestAdvisory')->name('admin.requestAdvisory');
 });
