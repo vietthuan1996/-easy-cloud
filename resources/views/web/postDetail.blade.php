@@ -1,6 +1,6 @@
 @extends('layout.web')
 @section('content')
-<div class="row cloud-storage">
+<div class=" cloud-storage">
     <!-- section1 -->
     <section class="section1 row m-0">
         <div class="text-center col-12 logo">
