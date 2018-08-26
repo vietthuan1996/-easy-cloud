@@ -20,6 +20,7 @@ $factory->define(App\Information::class, function (Faker $faker) {
         'hotline' => $faker->randomDigit(10),
         'email' => 'easycloud@gmail.com',
         'website' => 'http://entcloud.vn',
-        'describe' => $faker->sentence(150)
+        'describe' => $faker->sentence(150),
+        'logo' => ''
     ];
 });

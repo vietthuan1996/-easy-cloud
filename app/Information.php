@@ -16,6 +16,7 @@ class Information extends Model
         'email',
         'website',
         'describe',
+        'logo'
     ];
     protected $table = 'information';
 }

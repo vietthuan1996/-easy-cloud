@@ -5,10 +5,23 @@
     @if(Session::has('success'))
         <p class="alert alert-success">{{ Session::get('success') }}</p>
     @endif
+    @if(Session::has('fail'))
+        <p class="alert alert-danger">{{ Session::get('fail') }}</p>
+    @endif
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     <div class="card">
         <form method="post" action="{{ route('admin.solution.save') }}" class="form-horizontal" enctype="multipart/form-data" id="createValidation">
             {{ csrf_field() }}
             <input type="hidden" name="id" value="{{ $solution == null ? '' : $solution->id }}">
+            <input type="hidden" name="imageExist" value="{{ $solution == null ? '' : $solution->image }}">
             <div class="card-header card-header-text" data-background-color="rose">
                 <h4 class="card-title">Sửa bài</h4>
             </div>
@@ -19,7 +32,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input required type="text" name="name" class="form-control" value="{{ $solution == null ? '' : $solution->name }}">
+                            <input required type="text" name="name" class="form-control" value="{{ $solution == null ? '' : $solution->name }} {{old('name')}}">
                         </div>
                     </div>
                 </div>
@@ -29,14 +42,14 @@
                 <div class="row text-center">
                     <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                         <div class="fileinput-new thumbnail">
-                            <img src="{{asset('/img/image_placeholder.jpg')}}" alt="...">
+                            <img src="{{asset($solution == null ? '/img/image_placeholder.jpg' : $solution->image)}}" alt="...">
                         </div>
                         <div class="fileinput-preview fileinput-exists thumbnail"></div>
                         <div>
                             <span class="btn btn-rose btn-round btn-file">
                                 <span class="fileinput-new">Select image</span>
                             <span class="fileinput-exists">Change</span>
-                            <input required type="file" name="image" />
+                            <input type="file" name="image" {{ $solution == null ? 'required' : $solution->image == null ? 'required' : ''}}/>
                             </span>
                             <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                         </div>
@@ -52,6 +65,7 @@
                             <label class="control-label"></label>
                             <textarea required id="contentDescribe" class="form-control" name="describe" rows="10">
                                 {{ $solution == null ? '' : $solution->describe }}
+                                {{old('describe')}}
                             </textarea>
                         </div>
                     </div>
@@ -66,6 +80,7 @@
                             <label class="control-label"></label>
                             <textarea required id="contentPost" class="form-control" name="contentSolution" rows="10">
                                 {{ $solution == null ? '' : $solution->content }}
+                                {{old('contentSolution')}}
                             </textarea>
                         </div>
                     </div>
@@ -76,7 +91,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input required  class="form-control" name="link" rows="10" value="{{ $solution == null ? '' : $solution->link }}">
+                            <input required  class="form-control" name="link" rows="10" value="{{ $solution == null ? '' : $solution->link }} {{ old('link') }}">
                             </input>
                         </div>
                     </div>

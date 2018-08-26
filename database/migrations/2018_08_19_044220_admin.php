@@ -23,6 +23,7 @@ class Admin extends Migration
             $table->string('token_forgot')->nullable();
             $table->string('password');
             $table->string('role');
+            $table->string('remember_token')->nullable();
             $table->timestamps();
         });
     }
