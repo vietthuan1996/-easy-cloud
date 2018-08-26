@@ -10629,6 +10629,7 @@ section {
 .tech .section1 .logo h1 {
   font-family: 'Times New Roman', Times, serif;
   font-weight: 900;
+  font-size: 50px;
 }
 
 .resolve .section1 .logo h2,
@@ -10639,7 +10640,7 @@ section {
 
 .resolve .section2,
 .tech .section2 {
-  margin-top: -150px;
+  margin-top: -290px;
   margin-bottom: 100px;
   background-color: #fff;
 }
@@ -10659,7 +10660,7 @@ section {
   font-weight: 700;
   font-size: 24px;
   line-height: 40px;
-  color: #333;
+  color: #0d4c88;
   text-transform: uppercase;
   margin-bottom: 40px;
 }

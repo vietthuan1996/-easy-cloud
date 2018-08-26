@@ -144,6 +144,7 @@ section {
             h1 {
                 font-family: 'Times New Roman', Times, serif;
                 font-weight: 900;
+                font-size: 50px;
             }
             h2 {
                 font-size: 4vh;
@@ -152,7 +153,7 @@ section {
         }
     }
     .section2 {
-        margin-top: -150px;
+        margin-top: -290px;
         margin-bottom: 100px;
         background-color: #fff;
         .row {
@@ -165,7 +166,7 @@ section {
                     font-weight: 700;
                     font-size: 24px;
                     line-height: 40px;
-                    color: #333;
+                    color: $main-2;
                     text-transform: uppercase;
                     margin-bottom: 40px;
                 }
