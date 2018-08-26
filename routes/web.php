@@ -14,9 +14,10 @@ Route::get('/home', 'Controller@index')->name('home');
 Route::get('/', 'Controller@index')->name('home');
 Route::get('/lienhe', 'Controller@contact')->name('contact');
 Route::get('/giaiphap', 'Controller@solution')->name('solution');
-Route::get('/giaiphap/:slug', 'Controller@solutionDetail')->name('solution.detail');
+Route::get('/giaiphap/{slug}', 'Controller@solutionDetail')->name('solution.detail');
 Route::get('/dichvu', 'Controller@service')->name('service');
-Route::get('/dichvu/:slug', 'Controller@solutionDetail')->name('service.detail');
+Route::get('/dichvu/{slug}', 'Controller@solutionDetail')->name('service.detail');
+Route::post('/lienhe', 'Controller@receiveContact')->name('receiveContact');
 
 // Management information admin routes
 Route::get('/password/reset', 'Auth\AdminLoginController@showLinkRequestForm')->name('password.request');

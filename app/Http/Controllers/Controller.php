@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Information;
+use App\RequestAdvisory;
 use App\Service;
 use App\Solution;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -36,8 +38,12 @@ class Controller extends BaseController
         return view('web.solution',['solution' => $solution]);
     }
 
-    public function solutionDetail() {
-        return view('web.postDetail');
+    public function solutionDetail($slug) {
+        $solution = Solution::where('slug', $slug)->get()->first();
+        if(!$solution) {
+            throw abort(404);
+        }
+        return view('web.solutionDetail',['solution' => $solution]);
     }
 
     public function service() {
@@ -45,7 +51,26 @@ class Controller extends BaseController
         return view('web.service',['service' => $service]);
     }
 
-    public function serviceDetail() {
-        return view('web.postDetail');
+    public function serviceDetail($slug) {
+        $service = Service::where('slug', $slug)->get()->first();
+        if(!$service) {
+            throw abort(404);
+        }
+        return view('web.serviceDetail',['service' => $service]);
     }
+
+    public function receiveContact(Request $request) {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'name' => 'required',
+            'content' => 'required',
+        ]);
+        $contact = new RequestAdvisory();
+        $contact->email = $request->email;
+        $contact->name = $request->name;
+        $contact->content = $request->content;
+        $contact->save();
+        return redirect()->back()->with('success', "Gửi liên hệ thành công, xin cảm ơn !");
+    }
+
 }
