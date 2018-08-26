@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,7 +10,7 @@ use Illuminate\Support\Facades\Password;
 
 class AdminLoginController extends Controller
 {
-    use SendsPasswordResetEmails;
+    use SendsPasswordResetEmails, ResetsPasswords;
 
     public function __contruct()
     {
@@ -40,7 +41,18 @@ class AdminLoginController extends Controller
         return redirect('/');
     }
 
-    public function showForgotForm() {
-        return view('auth.forgot');
+    public function showLinkRequestForm()
+    {
+        return view('auth.passwords.admin-email', ['active' => '']);
+    }
+
+    public function broker()
+    {
+        return Password::broker('admins');
+    }
+
+    public function showResetForm(Request $request, $token = null)
+    {
+        return view('auth.passwords.admin-reset', ['active' => 'home', 'token' => $token, 'email' => $request->email]);
     }
 }

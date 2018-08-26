@@ -18,6 +18,6 @@ $factory->define(App\Admin::class, function (Faker $faker) {
         'name' => 'ecloud',
         'email' => 'ecloud@gmail.com',
         'password' => Hash::make('ecloud2018'),
-        'role' => '["1"]'
+        'role' => 1
     ];
 });

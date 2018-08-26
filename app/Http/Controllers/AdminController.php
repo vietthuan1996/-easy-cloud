@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use App\Information;
 use App\RequestAdvisory;
 use App\Service;
@@ -9,6 +10,10 @@ use App\Solution;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+use App\Mail\MailAccount;
+use View;
 
 class AdminController extends Controller
 {
@@ -18,6 +23,10 @@ class AdminController extends Controller
     }
 
     public function dashboard() {
+        if (!Auth::check())
+        {
+            return redirect()->route('admin.login');
+        }
         $information = Information::select('company_name', 'address', 'hotline', 'email', 'website', 'describe', 'logo')->get()->first();
         return view('admin.dashboard', ['information' => $information]);
     }
@@ -273,5 +282,48 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Thay đổi mật khẩu thành công ');
     }
 
+    public function adminManagement() {
+        $admin = Admin::get();
+        return view('admin.adminManagement', ['admin' => $admin]);
+    }
 
+    public function adminAddManagement(Request $request) {
+        $this->validate($request, [
+            'email' => 'required|email'
+        ]);
+        $email = Admin::query()->where("email", $request->email)->get()->first();
+        if (is_null($email)) {
+            $token_register = str_random(50);
+            $register = Admin::insert(
+                [
+                    'email' => $request->email,
+                    'token_register' => $token_register,
+                    'password' => Hash::make(str_random(20)),
+                    'role' => 0
+                ]
+            );
+            if ($register)
+            {
+                $newAdmin = Admin::query()->where('email', $request->email)->get()->first();
+                $url = route('mailregister',['token' => $token_register, 'id' => $newAdmin->id]);
+                Mail::to($request->email)->send(new MailAccount($url));
+                return back()->withInput(Session::flash('success', 'Success register member !'));
+            }
+        }
+        else
+        {
+            return back()->withInput(Session::flash('fail', 'Email of member is exsit !'));
+        }
+    }
+
+
+    public function adminRemoveManagement($id) {
+        $admin = Admin::where('id', $id)->first();
+        try {
+            $admin->delete();
+        } catch (Illuminate\Database\QueryException $e) {
+            return redirect()->route('admin.adminAddManagement')->with('fail', "Cập nhật thông tin thất bại !");
+        }
+        return redirect()->route('admin.adminAddManagement')->with('success', "Cập nhật thành công !");
+    }
 }

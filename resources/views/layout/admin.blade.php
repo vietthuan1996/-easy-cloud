@@ -60,6 +60,14 @@
                         </a>
                     </li>
 
+                    @if(Auth::user()->role == 1)
+                    <li>
+                        <a href="{{ route('admin.adminManagement')}}">
+                            <i class="material-icons">information</i>
+                            <p> Quản lý admin </p>
+                        </a>
+                    </li>
+                    @endif
                 </ul>
             </div>
         </div>
