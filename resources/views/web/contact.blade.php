@@ -16,7 +16,23 @@
         <div class="row">
             <div class="col-12 col-sm-6 order-sm-2">
                 <h4>Gởi Tin Nhắn Cho Chúng Tôi</h4>
-                <form>
+                @if(Session::has('success'))
+                    <p class="alert alert-success">{{ Session::get('success') }}</p>
+                @endif
+                @if(Session::has('fail'))
+                    <p class="alert alert-danger">{{ Session::get('fail') }}</p>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form method="post" action="{{route('receiveContact')}}">
+                {{ csrf_field() }}
                     <!-- email -->
                     <div class="form-group">
                         <label for="exampleInputEmail1">
@@ -24,7 +40,7 @@
                                     <span class="text-danger">*</span>
                                 </b>
                             </label>
-                        <input type="email" class="form-control" placeholder="Vui lòng nhập địa chỉ email">
+                        <input type="email" class="form-control" placeholder="Vui lòng nhập địa chỉ email" name="email">
                     </div>
                     <!-- email -->
                     <!-- name -->
@@ -34,7 +50,7 @@
                                     <span class="text-danger">*</span>
                                 </b>
                             </label>
-                        <input type="text" class="form-control" placeholder="Vui lòng nhập họ tên">
+                        <input type="text" class="form-control" placeholder="Vui lòng nhập họ tên" name="name">
                     </div>
                     <!-- name -->
                     <div class="form-group">
@@ -51,14 +67,14 @@
                 </form>
             </div>
             <div class="col-12 col-sm-6 text-center order-sm-1 info">
-                <h4>Turbo sulotions</h4>
+                <h4>{{ $informationSetting == null ? '' : ($informationSetting->company_name == null ? '' :$informationSetting->company_name)}}</h4>
                 <div class="col-12 ">
                     <p>
-                        <i class="fas fa-home"></i> 1237/17 Hoàng Sa, Phường 5, Quận Tân Bình, TP.HCM</p>
+                        <i class="fas fa-home"></i> {{ $informationSetting == null ? '' : ($informationSetting->address == null ? '' :$informationSetting->address)}}</p>
                     <p>
-                        <i class="fas fa-phone-square"></i> 0902.636.836</p>
+                        <i class="fas fa-phone-square"></i> {{ $informationSetting == null ? '' : ($informationSetting->hotline == null ? '' :$informationSetting->hotline)}}</p>
                     <p>
-                        <i class="fas fa-envelope"></i> info@turbo.vn</p>
+                        <i class="fas fa-envelope"></i> {{ $informationSetting == null ? '' : ($informationSetting->email == null ? '' :$informationSetting->email)}}</p>
                     <p></p>
                 </div>
             </div>
