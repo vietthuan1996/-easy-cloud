@@ -20,9 +20,9 @@ class Admin extends Migration
             $table->integer('phone')->nullable();
             $table->string('image')->nullable();
             $table->string('token_register')->nullable();
-            $table->string('token_forgot')->nullable();
+            $table->string('token')->nullable();
             $table->string('password');
-            $table->string('role');
+            $table->integer('role');
             $table->string('remember_token')->nullable();
             $table->timestamps();
         });

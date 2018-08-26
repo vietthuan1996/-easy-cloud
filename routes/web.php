@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/home', 'Controller@index')->name('home');
 Route::get('/', 'Controller@index')->name('home');
 Route::get('/lienhe', 'Controller@contact')->name('contact');
 Route::get('/giaiphap', 'Controller@solution')->name('solution');
@@ -19,16 +19,22 @@ Route::get('/dichvu', 'Controller@service')->name('service');
 Route::get('/dichvu/:slug', 'Controller@solutionDetail')->name('service.detail');
 
 // Management information admin routes
-Route::get('/forgot', 'Auth\AdminLoginController@showForgotForm')->name('forgot');
+Route::get('/password/reset', 'Auth\AdminLoginController@showLinkRequestForm')->name('password.request');
 Route::post('/password/email', 'Auth\AdminLoginController@sendResetLinkEmail')->name('password.email');
+Route::post('/password/reset', 'Auth\AdminLoginController@reset');
+Route::get('/mailregister/{token}/{id}', 'HomeController@mailregister')->name('mailregister');
+Route::post('/confirmregister', 'HomeController@confirmregister')->name('confirm');
+Route::get('/password/reset/{token}', 'Auth\AdminLoginController@showResetForm')->name('password.reset');
+
 
 // Admin routes
 Route::prefix('admin')->group(function() {
+    Route::get('/', 'Auth\AdminLoginController@showLoginForm');
+    Route::get('/trangadmin', 'AdminController@dashboard')->name('admin');
+    Route::post('/', 'AdminController@editInformation')->name('admin.editInformation');
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
-    Route::get('/', 'AdminController@dashboard')->name('admin');
-    Route::post('/', 'AdminController@editInformation')->name('admin.editInformation');
     Route::get('/dichvu', 'AdminController@service')->name('admin.service');
     Route::get('/dichvu/them', 'AdminController@createService')->name('admin.service.create');
     Route::get('/dichvu/sua/{id}', 'AdminController@createService')->name('admin.service.edit');
@@ -43,5 +49,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/lienhe/xoa/{id}', 'AdminController@removeRequestAdvisory')->name('admin.requestAdvisory.delete');
     Route::get('/thongtincanhan', 'AdminController@adminInformation')->name('admin.adminInformation');
     Route::post('/thaydoimatkhau', 'AdminController@changePassword')->name('admin.changePassword');
-
+    Route::get('/themadmin', 'AdminController@adminManagement')->name('admin.adminManagement');
+    Route::post('/themadmin', 'AdminController@adminAddManagement')->name('admin.adminAddManagement');
+    Route::get('/xoaadmin/{id}', 'AdminController@adminRemoveManagement')->name('admin.adminRemoveManagement');
 });
