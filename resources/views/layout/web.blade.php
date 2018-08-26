@@ -32,24 +32,22 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                CÔNG NGHỆ
+                                DỊCH VỤ
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('service') }}">Tổng quan</a>
-                                <a class="dropdown-item" href="{{ route('service.detail', 1) }}">Chi tiết</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                GIẢI PHÁP
+                                GIẢI PHÁP
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('solution') }}">Tổng quan</a>
-                                <a class="dropdown-item" href="{{ route('solution.detail', 1) }}">chi tiết</a>
                             </div>
                         </li>
                         <li class="nav-item" class="">
-                            <a class="nav-link pr-5" href="{{ route('contact')}}">LIỆN HỆ</a>
+                            <a class="nav-link pr-5" href="{{ route('contact')}}">LIÊN HỆ̣</a>
                         </li>
 
                     </ul>
@@ -63,38 +61,31 @@
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 text-center column">
                     <h4>Giới thiệu</h4>
-                    <p>Seafile.VN là sản phẩm lưu trữ đám mây thế hệ mới được Turbo Solutions tích hợp triển khai, dùng đồng
-                        bộ và chia sẻ dữ liệu; hỗ trợ tương tác, làm việc nhóm; bảo vệ tính riêng tư đến từng người dùng.</p>
+                    <p>
+                        {{ $informationSetting == null ? '' : ($informationSetting->describe == null ? '' :strip_tags($informationSetting->describe))}}
+                    </p>
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 text-center column">
                     <h4>Liên kết</h4>
                     <div col-12>
+                        @if(!is_null($serviceSetting))
+                            @foreach($serviceSetting as $service)
                         <p>
-                            <a href="">Giải pháp lưu trữ đám mây</a>
+                            <a href="{{ $service->type_show == 0 ? $service->link : $service->slug }}">Giải pháp lưu trữ đám mây</a>
                         </p>
-                        <p>
-                            <a href="">Giải pháp lưu trữ đám mây</a>
-                        </p>
-                        <p>
-                            <a href="">Giải pháp lưu trữ đám mây</a>
-                        </p>
-                        <p>
-                            <a href="">Giải pháp lưu trữ đám mây</a>
-                        </p>
-                        <p>
-                            <a href="">Giải pháp lưu trữ đám mây</a>
-                        </p>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 text-center column">
-                    <h4>Turbo sulotions</h4>
+                    <h4>{{ $informationSetting == null ? '' : ($informationSetting->company_name == null ? '' :$informationSetting->company_name)}}</h4>
                     <div class="col-12">
                         <p>
-                            <i class="fas fa-home"></i> 1237/17 Hoàng Sa, Phường 5, Quận Tân Bình, TP.HCM</p>
+                            <i class="fas fa-home"></i> {{ $informationSetting == null ? '' : ($informationSetting->address == null ? '' :$informationSetting->address)}}</p>
                         <p>
-                            <i class="fas fa-phone-square"></i> 0902.636.836</p>
+                            <i class="fas fa-phone-square"></i> {{ $informationSetting == null ? '' : ($informationSetting->hotline == null ? '' :$informationSetting->hotline)}}</p>
                         <p>
-                            <i class="fas fa-envelope"></i> info@turbo.vn</p>
+                            <i class="fas fa-envelope"></i> {{ $informationSetting == null ? '' : ($informationSetting->email == null ? '' :$informationSetting->email)}}</p>
                         <p></p>
                     </div>
                 </div>

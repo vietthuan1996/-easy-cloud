@@ -53,11 +53,20 @@
                                 <p> Liên hệ </p>
                             </a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.adminInformation')}}">
+                            <i class="material-icons">information</i>
+                            <p> Đổi mật khẩu </p>
+                        </a>
+                    </li>
 
                 </ul>
             </div>
         </div>
         <div class="main-panel">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.logout') }}">{{ __('Đăng xuất') }}</a>
+            </li>
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">

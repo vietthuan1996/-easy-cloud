@@ -1,21 +1,32 @@
 @extends('layout.admin')
 @section('content')
-<div class="card card-product">
+    @if(Session::has('success'))
+        <p class="alert alert-success">{{ Session::get('success') }}</p>
+    @endif
+    @if(Session::has('fail'))
+        <p class="alert alert-danger">{{ Session::get('fail') }}</p>
+    @endif
+    @if(!is_null($requestAdvisory))
+        @foreach($requestAdvisory as $request)
+    <div class="card card-product">
     <div class="card-content">
-        <h4 class="card-title">Ten nguoi gui</h4>
-        <h4 class="card-title">Email: email@emial.com</h4>
+        <h4 class="card-title">{{$request->name}}</h4>
+        <h4 class="card-title">{{$request->email}}</h4>
         <div class="card-description">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit ipsam repellendus, blanditiis excepturi nam minus dolor dolore atque ipsum possimus!
+            {{$request->content}}
         </div>
     </div>
 
     <div class="card-footer">
-        {{--  <button type="button" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="Edit">
-            <i class="material-icons"></i>
-        </button>  --}}
-        <button type="button" class="btn btn-danger btn-simple" rel="tooltip" data-placement="bottom" title="Xóa">
+        <a href="{{ route('admin.requestAdvisory.delete', $request->id) }}" type="button" class="btn btn-danger btn-simple removeSolution" rel="tooltip" data-placement="bottom" title="Xóa" onclick="return confirm('Bạn có muốn xoá hay không ?')">
             <i class="material-icons">close</i>
-        </button>
+        </a>
     </div>
 </div>
+    @endforeach
+        {{$requestAdvisory->links()}}
+    @elseif (is_null($requestAdvisory))
+        <p>Không có liên hệ được gửi đến !</p>
+    @else
+    @endif
 @endsection

@@ -2,17 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Information;
+use App\Service;
+use App\Solution;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use View;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function __construct()
+    {
+        $service = Service::limit(5)->get();
+        $information = Information::get()->first();
+        View::share(['serviceSetting' => $service, 'informationSetting' => $information]);
+    }
     public function index() {
-        return view('web.index');
+        $service = Service::limit(3)->get();
+        return view('web.index', ['service' => $service]);
     }
 
     public function contact() {
@@ -20,7 +31,8 @@ class Controller extends BaseController
     }
 
     public function solution() {
-        return view('web.solution');
+        $solution = Solution::get();
+        return view('web.solution',['solution' => $solution]);
     }
 
     public function solutionDetail() {
@@ -28,7 +40,8 @@ class Controller extends BaseController
     }
 
     public function service() {
-        return view('web.service');
+        $service = Service::get();
+        return view('web.service',['service' => $service]);
     }
 
     public function serviceDetail() {

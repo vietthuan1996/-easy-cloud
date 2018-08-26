@@ -15,21 +15,28 @@
     <section class="section2 col-12 feature">
         <div class="row justify-content-center">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                @if(!is_null($service))
+                    {{
+                    $i = 1
+                    }}
+                    @foreach($service as $s)
                 <li class="nav-item">
-                    <a class="nav-link active green" id="pills-1-tab" data-toggle="pill" href="#pills-1" role="tab" aria-controls="pills-1" aria-selected="true">Lưu trữ đám mây
+                    <a class="nav-link active green" id="pills-{{$i++}}-tab" data-toggle="pill" href="#pills-{{$i++}}" role="tab" aria-controls="pills-{{$i++}}" aria-selected="true">{{$s->name}}
                         <i class="icon fab fa-cloudversify"></i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link red" id="pills-2-tab" data-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false">Giải pháp bảo mật
-                        <i class="icon fas fa-user-secret"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link yellow" id="pills-3-tab" data-toggle="pill" href="#pills-3" role="tab" aria-controls="pills-3" aria-selected="false">Dịch vụ máy chủ
-                        <i class="icon fas fa-server"></i>
-                    </a>
-                </li>
+                    @endforeach
+                @endif
+                {{--<li class="nav-item">--}}
+                    {{--<a class="nav-link red" id="pills-2-tab" data-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false">Giải pháp bảo mật--}}
+                        {{--<i class="icon fas fa-user-secret"></i>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item">--}}
+                    {{--<a class="nav-link yellow" id="pills-3-tab" data-toggle="pill" href="#pills-3" role="tab" aria-controls="pills-3" aria-selected="false">Dịch vụ máy chủ--}}
+                        {{--<i class="icon fas fa-server"></i>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
             </ul>
         </div>
         <div class="tab-content" id="pills-tabContent">
