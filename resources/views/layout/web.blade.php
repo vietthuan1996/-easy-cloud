@@ -26,28 +26,33 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('home')}}">TRANG CHỦ
-                                <span class="sr-only">(current)</span>
+                            <a class="nav-link pr-4 pl-4" href="{{ route('home')}}">TRANG CHỦ
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item" class="">
+                            <a class="nav-link pr-4 pl-4" href="{{ route('service')}}">DỊCH VỤ</a>
+                        </li>
+                        <li class="nav-item" class="">
+                            <a class="nav-link pr-4 pl-4" href="{{ route('solution')}}">GIẢI PHÁP</a>
+                        </li>
+                        {{--  <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 DỊCH VỤ
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('service') }}">Tổng quan</a>
                             </div>
-                        </li>
-                        <li class="nav-item dropdown">
+                        </li>  --}}
+                        {{--  <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 GIẢI PHÁP
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('solution') }}">Tổng quan</a>
                             </div>
-                        </li>
+                        </li>  --}}
                         <li class="nav-item" class="">
-                            <a class="nav-link pr-5" href="{{ route('contact')}}">LIÊN HỆ̣</a>
+                            <a class="nav-link pr-4 pl-4" href="{{ route('contact')}}">LIÊN HỆ̣</a>
                         </li>
 
                     </ul>
