@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-12 col-sm-5 text-center content">
                         <h3 class="mb-5">
-                            <a href="" class="blue">
+                            <a href="{{ route('solution')}}" class="blue">
                                     <i class="icon fab fa-cloudversify"></i> Lưu Trữ Đám Mây</a>
                         </h3>
                         <p>
@@ -50,7 +50,7 @@
 
                                 </span>
                             <br>
-                            <a href="" class="btn btn-see-more mt-4">CHI TIẾT</a>
+                            <a href="{{ route('solution')}}" class="btn btn-see-more mt-4">CHI TIẾT</a>
                         </p>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-12 col-sm-5 offset-sm-1 text-center content order-sm-1">
                         <h3 class="mb-5">
-                            <a href="./giaiphap.html" class="red">
+                            <a href="{{ route('solution')}}" class="red">
                                     <i class="icon fas fa-user-secret"></i> Giải Pháp Bảo Mật</a>
                         </h3>
                         <p>
@@ -72,7 +72,7 @@
 
                                 </span>
                             <br>
-                            <a href="" class="btn btn-see-more mt-4">CHI TIẾT</a>
+                            <a href="{{ route('solution')}}" class="btn btn-see-more mt-4">CHI TIẾT</a>
                         </p>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-12 col-sm-5 text-center content">
                         <h3 class="mb-5">
-                            <a href="" class="yellow">
+                            <a href="{{ route('service')}}" class="yellow">
                                     <i class="icon fas fa-server"></i> Dịch Vụ Máy Chủ</a>
                         </h3>
                         <p>
@@ -93,7 +93,7 @@
                                     lợi nhuận trong đầu tư hạ tầng công nghệ thông tin.
                                 </span>
                             <br>
-                            <a href="" class="btn btn-see-more mt-4">CHI TIẾT</a>
+                            <a href="{{ route('service')}}" class="btn btn-see-more mt-4">CHI TIẾT</a>
                         </p>
                     </div>
                 </div>

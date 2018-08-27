@@ -25,14 +25,14 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item {{ $active == 'home' ? 'active' : '' }}">
                             <a class="nav-link pr-4 pl-4" href="{{ route('home')}}">TRANG CHỦ
                             </a>
                         </li>
-                        <li class="nav-item" class="">
+                        <li class="nav-item {{ $active == 'service' ? 'active' : '' }}" class="">
                             <a class="nav-link pr-4 pl-4" href="{{ route('service')}}">DỊCH VỤ</a>
                         </li>
-                        <li class="nav-item" class="">
+                        <li class="nav-item {{ $active == 'solution' ? 'active' : '' }}" class="">
                             <a class="nav-link pr-4 pl-4" href="{{ route('solution')}}">GIẢI PHÁP</a>
                         </li>
                         {{--  <li class="nav-item dropdown">
@@ -51,7 +51,7 @@
                                 <a class="dropdown-item" href="{{ route('solution') }}">Tổng quan</a>
                             </div>
                         </li>  --}}
-                        <li class="nav-item" class="">
+                        <li class="nav-item {{ $active == 'contact' ? 'active' : '' }}" class="">
                             <a class="nav-link pr-4 pl-4" href="{{ route('contact')}}">LIÊN HỆ̣</a>
                         </li>
 

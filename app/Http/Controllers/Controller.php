@@ -26,16 +26,16 @@ class Controller extends BaseController
     }
     public function index() {
         $service = Service::limit(3)->get();
-        return view('web.index', ['service' => $service]);
+        return view('web.index', ['service' => $service, 'active' => 'home']);
     }
 
     public function contact() {
-        return view('web.contact');
+        return view('web.contact', ['active' => 'contact']);
     }
 
     public function solution() {
         $solution = Solution::get();
-        return view('web.solution',['solution' => $solution]);
+        return view('web.solution',['solution' => $solution, 'active' => 'solution']);
     }
 
     public function solutionDetail($slug) {
@@ -43,12 +43,12 @@ class Controller extends BaseController
         if(!$solution) {
             throw abort(404);
         }
-        return view('web.solutionDetail',['solution' => $solution]);
+        return view('web.solutionDetail',['solution' => $solution, 'active' => 'solution']);
     }
 
     public function service() {
         $service = Service::get();
-        return view('web.service',['service' => $service]);
+        return view('web.service',['service' => $service, 'active' => 'service']);
     }
 
     public function serviceDetail($slug) {
@@ -56,7 +56,7 @@ class Controller extends BaseController
         if(!$service) {
             throw abort(404);
         }
-        return view('web.serviceDetail',['service' => $service]);
+        return view('web.serviceDetail',['service' => $service, 'active' => 'service']);
     }
 
     public function receiveContact(Request $request) {
